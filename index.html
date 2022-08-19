@@ -9,8 +9,22 @@
    <script src="script.js" defer></script>
 </head>
 <body>
-  <div id="shelf">
-    
+  <form method="get" class="book-form" id="book-form">
+    <h2>Add Book</h2>
+    <input type="text" placeholder="Title" name="title" id="name">
+    <input type="text" placeholder="Author" name="author" id="author">
+    <input type="text" placeholder="Pages" name="pages" id="pages">
+    <div>
+      <label for="read">Read?</label>
+      <input type="checkbox" name="read" id="read">
+    </div>
+    <button class="submit-button" type="sumbit">Add</button>
+  </form>
+  <div class="library">
+    <h1>Library</h1>
+    <div id="shelf">
+    </div>
+    <button class="add-button">+</button>
   </div>
 </body>
 </html>

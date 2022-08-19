@@ -1,5 +1,9 @@
 let myLibrary = [];
 
+const body = document.querySelector('body');
+const form = document.querySelector('.book-form');
+const library = document.querySelector('.library');
+
 function Book(title, author, pages, read){
   this.title  = title;
   this.author = author;
@@ -7,7 +11,8 @@ function Book(title, author, pages, read){
   this.read   = read;
 }
 
-function addBookToLibrary(book) {
+function addBookToLibrary(title, author, pages, read) {
+  const book = new Book(title,author,pages, read)
   myLibrary.push(book);
 }
 
@@ -29,15 +34,43 @@ function addBookCard(book){
   shelf.appendChild(card);
 }
 
-const potter = new Book('potter', 'jk bowling', 1000, true);
-const potter2 = new Book('potter', 'jk bowling', 1000, true);
-addBookToLibrary(potter);
-addBookToLibrary(potter2);
-
 function displayLibrary(library){
   library.forEach(book => {
     addBookCard(book);
   });
 }
 
-displayLibrary(myLibrary);
+function removeForm(){
+  form.remove();
+}
+
+function addListenHelper(){
+  body.insertBefore(form, library);
+  library.classList.add('opaque');
+}
+
+function addListen(){
+  const btn = document.querySelector('.add-button');
+  btn.addEventListener('click', () => {
+    addListenHelper()
+  });
+}
+
+function sumbitListenHelper(){
+  console.log(form.get('title'));
+}
+
+function submitListen(){
+  const btn = document.querySelector('.submit-button');
+  btn.addEventListener('click', () => {
+    sumbitListenHelper();
+  });
+}
+
+function driver(){
+  removeForm();
+  addListen();
+  submitListen();
+}
+
+driver();
